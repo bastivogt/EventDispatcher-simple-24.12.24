@@ -12,6 +12,7 @@ public class Main {
             CounterEvent event = (CounterEvent) e;
             Counter sender = (Counter) e.getSender();
             System.out.println(event.getType() + ": " + event.getCount());
+
         });
 
         counter.getEventDispatcher().addListener(CounterEvent.COUNTER_CHANGED, (Event e) -> {
