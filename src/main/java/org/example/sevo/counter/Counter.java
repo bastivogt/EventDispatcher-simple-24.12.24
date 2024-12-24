@@ -1,6 +1,5 @@
 package org.example.sevo.counter;
 
-import org.example.sevo.events.Event;
 import org.example.sevo.events.EventDispatcher;
 
 public class Counter {
