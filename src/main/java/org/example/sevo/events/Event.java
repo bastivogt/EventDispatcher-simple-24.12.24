@@ -2,8 +2,8 @@ package org.example.sevo.events;
 
 public class Event {
 
-    String type;
-    Object sender;
+    protected String type;
+    protected Object sender;
 
     public Event(String type, Object sender) {
         this.type = type;
