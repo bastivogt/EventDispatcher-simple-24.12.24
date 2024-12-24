@@ -10,20 +10,20 @@ public class Main {
 
         counter.getEventDispatcher().addListener(CounterEvent.COUNTER_STARTED, (Event e) -> {
             CounterEvent event = (CounterEvent) e;
-            Counter sender = (Counter) e.getSender();
+            Counter sender = (Counter) event.getSender();
             System.out.println(event.getType() + ": " + event.getCount());
 
         });
 
         counter.getEventDispatcher().addListener(CounterEvent.COUNTER_CHANGED, (Event e) -> {
             CounterEvent event = (CounterEvent) e;
-            Counter sender = (Counter) e.getSender();
+            Counter sender = (Counter) event.getSender();
             System.out.println(event.getType() + ": " + event.getCount());
         });
 
         counter.getEventDispatcher().addListener(CounterEvent.COUNTER_FINISHED, (Event e) -> {
             CounterEvent event = (CounterEvent) e;
-            Counter sender = (Counter) e.getSender();
+            Counter sender = (Counter) event.getSender();
             System.out.println(event.getType() + ": " + event.getCount());
         });
 
