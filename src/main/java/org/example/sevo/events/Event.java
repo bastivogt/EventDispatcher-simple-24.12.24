@@ -1,11 +1,11 @@
 package org.example.sevo.events;
 
-public class Event<S> {
+public class Event<TYPE_SENDER> {
 
     protected String type;
-    protected S sender;
+    protected TYPE_SENDER sender;
 
-    public Event(String type, S sender) {
+    public Event(String type, TYPE_SENDER sender) {
         this.type = type;
         this.sender = sender;
     }
@@ -14,7 +14,7 @@ public class Event<S> {
         return this.type;
     }
 
-    public S getSender() {
+    public TYPE_SENDER getSender() {
         return this.sender;
     }
 }
