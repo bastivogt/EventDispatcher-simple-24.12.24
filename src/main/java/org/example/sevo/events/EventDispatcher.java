@@ -2,12 +2,12 @@ package org.example.sevo.events;
 
 import java.util.HashMap;
 
-public class EventDispatcher {
+public class EventDispatcher<S, E extends Event<S>> {
 
-    HashMap<String, IListener> listeners;
+    HashMap<String, IListener<E>> listeners;
 
-    public static EventDispatcher initialize() {
-        return new EventDispatcher();
+    public static  <T, F extends Event<T>> EventDispatcher<T, F> initialize(){
+        return new EventDispatcher<>();
     }
 
     public EventDispatcher() {
@@ -18,7 +18,7 @@ public class EventDispatcher {
         return this.listeners.containsKey(type);
     }
 
-    public boolean addListener(String type, IListener listener) {
+    public boolean addListener(String type, IListener<E> listener) {
         if(!this.hasListener(type)) {
             this.listeners.put(type, listener);
             return true;
@@ -34,7 +34,7 @@ public class EventDispatcher {
         return false;
     }
 
-    public void dispatchEvent(Event event) {
+    public void dispatchEvent(E event) {
         if(this.hasListener(event.getType())) {
             this.listeners.get(event.getType()).listener(event);
         }

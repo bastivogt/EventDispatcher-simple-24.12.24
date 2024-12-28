@@ -9,7 +9,7 @@ public class Counter {
     private int step;
     private int count;
 
-    private final EventDispatcher eventDispatcher;
+    private final EventDispatcher<Counter, CounterEvent> eventDispatcher;
 
 
 
@@ -17,7 +17,7 @@ public class Counter {
         return this.count;
     }
 
-    public EventDispatcher getEventDispatcher() {
+    public EventDispatcher<Counter, CounterEvent> getEventDispatcher() {
         return this.eventDispatcher;
     }
 
@@ -25,7 +25,7 @@ public class Counter {
 
     public Counter(int start, int stop, int step) {
         this.reset(start, stop, step);
-        // this.eventDispatcher = new EventDispatcher();
+        //this.eventDispatcher = new EventDispatcher<>();
         this.eventDispatcher = EventDispatcher.initialize();
     }
 
@@ -44,13 +44,10 @@ public class Counter {
 
     public void run() {
         this.count = this.start;
-        // System.out.println("STARTED");
         this.getEventDispatcher().dispatchEvent(new CounterEvent(CounterEvent.COUNTER_STARTED, this, this.count));
         for(; this.count < this.stop; this.count += this.step) {
-            // System.out.println("CHANGED");
             this.getEventDispatcher().dispatchEvent(new CounterEvent(CounterEvent.COUNTER_CHANGED, this, this.count));
         }
-        // System.out.println("FINISHED");
         this.getEventDispatcher().dispatchEvent(new CounterEvent(CounterEvent.COUNTER_FINISHED, this, this.count));
     }
 

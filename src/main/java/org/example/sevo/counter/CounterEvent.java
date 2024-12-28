@@ -2,7 +2,7 @@ package org.example.sevo.counter;
 
 import org.example.sevo.events.Event;
 
-public class CounterEvent extends Event {
+public class CounterEvent extends Event<Counter> {
 
     public static final String COUNTER_STARTED = "COUNTER_STARTED";
     public static final String COUNTER_CHANGED = "COUNTER_CHANGED";
@@ -10,7 +10,7 @@ public class CounterEvent extends Event {
 
     private final int count;
 
-    public CounterEvent(String type, Object sender, int count) {
+    public CounterEvent(String type, Counter sender, int count) {
         super(type, sender);
         this.count = count;
     }
